@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital@1&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Bodoni Moda', serif;
+}
+
+body {
+    height: 100vh;
+    background: url(cakegif.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.card {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 320px;
+    left: 10%; /* Ajusta la posición para centrar la tarjeta */
+    transform: translateX(-50%); /* Ajusta para centrar la tarjeta */
+    transition: 2s;
+    transform-style: preserve-3d;
+
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+    left: 50%; /* Centra la tarjeta horizontalmente */
+    top: 50%; /* Centra la tarjeta verticalmente */
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: -20px; /* Agrega un padding según sea necesario */
+    }
+
+    .card {
+        width: 15%;
+        left: 10%;
+        top: 320px;
+        transform: translateX(-50%);
+        margin-top: 320px; /* Mitad de la altura de la tarjeta */
+
+    }
+}
+
+.card.fullscreen {
+    width: 50vw;
+    height: 70vh;
+    top: -20%;
+    left: 30%;
+    right: 40%;
+    transform: none;
+    z-index: 9999;
+    position: fixed;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.outside,
+.inside {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.outside {
+    background: url('musicogif.gif') center center no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.outside h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: salmon;
+    margin-bottom: 30px;
+}
+
+.inside {
+    display: none;
+    background-color: rgba(153, 186, 210, 255);
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.5);
+    transform: rotateY(180deg);
+}
+
+.card.flipped .inside {
+    display: block; /* Muestra la segunda cara cuando la tarjeta está volteada */
+}
+
+.inside img {
+    width: 80px;
+    height: auto;
+}
+
+.inside h5 {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.inside h6 {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-left: 9px;
+    margin-top: 12px;
+}
+
+.card .inside {
+    display: none;
+}
+
+.card:not(:hover) .outside {
+    background: url('musicogif.gif') center center no-repeat;
+    background-size: cover;
+}
+
+.card:hover .inside {
+    display: block;
+}
+
+.outside:not(:hover) h1,
+.outside:not(:hover) h5,
+.outside:not(:hover) h6 {
+    display: none;
+}
+
+.card:hover .outside h1,
+.card:hover .outside h5,
+.card:hover .outside h6 {
+    display: block;
+}
+
+.card:not(:hover) .inside {
+    display: none;
+}
+
+.card:hover .outside h1 {
+    display: none;
+}
+
+.frames {
+    width: 400px;
+    height: 150px;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 0.8rem;
+    transform: rotateY(-230deg) rotateX(20deg);
+    position: absolute;
+}
+
+.frames img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.frames p {
+    font-size: 20px;
+    font-weight: bold;
+    transform: rotateY(180deg);
+}
+
+.frames:nth-child(1) {
+    top: -110px;
+    z-index: -1;
+    background-color: coral;
+}
+
+.frames:nth-child(2) {
+    background-color: goldenrod;
+}
+
+.frames:nth-child(3) {
+    top: 100px;
+    background-color: burlywood;
+}
+.inside.visible {
+    display: block;
+}
+.outside h1,
+.outside h5,
+.outside h6 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: salmon;
+    margin-bottom: 30px;
+    visibility: hidden; /* Oculta inicialmente los elementos */
+    opacity: 0; /* También establece la opacidad en 0 */
+    transition: opacity 0.5s, visibility 0.5s; /* Agrega una transición suave */
+}
+
+.card.flipped .outside h1,
+.card.flipped .outside h5,
+.card.flipped .outside h6 {
+    visibility: visible; /* Muestra los elementos cuando la tarjeta está volteada */
+    opacity: 1;
+}
+/* Videos */
